@@ -83,64 +83,64 @@
     <script>
         function saveAndContinue() {
 
-            var strTemp = '';
-            var Invoice = document.getElementById("invoice");
-            var date = document.getElementById("date");
-            var from_warehouse_name = document.getElementById("transfer_from_warehouse");
-            // var from_Room_name = document.getElementById("FromRoom_name");
+            // var strTemp = '';
+            // var Invoice = document.getElementById("invoice");
+            // var date = document.getElementById("date");
+            // var from_warehouse_name = document.getElementById("transfer_from_warehouse");
+            // // var from_Room_name = document.getElementById("FromRoom_name");
 
-            var to_warehouse_name = document.getElementById("to_warehouse");
-            // var to_Room_name = document.getElementById("ToRoom_name");
+            // var to_warehouse_name = document.getElementById("to_warehouse");
+            // // var to_Room_name = document.getElementById("ToRoom_name");
 
-            var modal = document.getElementById("myModal");
+            // var modal = document.getElementById("myModal");
 
-            if(Invoice.value.length == 0){
-                strTemp += "Document Number is required. <br>" 
-                Invoice.style.borderColor = "red";
-                Invoice.focus()
-            }else{
-                Invoice.style.borderColor = "";
-            }
-
-            if(date.value.length == 0){
-                strTemp += "Date is required. <br>"
-                date.style.borderColor = "red";
-                date.focus()
-            }else{
-                date.style.borderColor = "";
-            }
-
-            if(from_warehouse_name.value.length == 0){
-                strTemp += "From Warehouse is required. <br>"
-                from_warehouse_name.style.borderColor = "red";
-                from_warehouse_name.focus()
-            }else{
-                from_warehouse_name.style.borderColor = "";
-            }
-
-            // if(from_Room_name.value.length == 0){
-            //     strTemp += "From Room  is required. <br>"
-            //     from_Room_name.style.borderColor = "red";
-            //     from_Room_name.focus()
+            // if(Invoice.value.length == 0){
+            //     strTemp += "Document Number is required. <br>" 
+            //     Invoice.style.borderColor = "red";
+            //     Invoice.focus()
             // }else{
-            //     from_Room_name.style.borderColor = "";
+            //     Invoice.style.borderColor = "";
             // }
 
-            if(to_warehouse_name.value.length == 0){
-                strTemp += "From Warehouse is required. <br>"
-                to_warehouse_name.style.borderColor = "red";
-                to_warehouse_name.focus()
-            }else{
-                to_warehouse_name.style.borderColor = "";
-            }
-
-            // if(to_Room_name.value.length == 0){
-            //     strTemp += "From Room  is required. <br>"
-            //     to_Room_name.style.borderColor = "red";
-            //     to_Room_name.focus()
+            // if(date.value.length == 0){
+            //     strTemp += "Date is required. <br>"
+            //     date.style.borderColor = "red";
+            //     date.focus()
             // }else{
-            //     to_Room_name.style.borderColor = "";
+            //     date.style.borderColor = "";
             // }
+
+            // if(from_warehouse_name.value.length == 0){
+            //     strTemp += "From Warehouse is required. <br>"
+            //     from_warehouse_name.style.borderColor = "red";
+            //     from_warehouse_name.focus()
+            // }else{
+            //     from_warehouse_name.style.borderColor = "";
+            // }
+
+            // // if(from_Room_name.value.length == 0){
+            // //     strTemp += "From Room  is required. <br>"
+            // //     from_Room_name.style.borderColor = "red";
+            // //     from_Room_name.focus()
+            // // }else{
+            // //     from_Room_name.style.borderColor = "";
+            // // }
+
+            // if(to_warehouse_name.value.length == 0){
+            //     strTemp += "From Warehouse is required. <br>"
+            //     to_warehouse_name.style.borderColor = "red";
+            //     to_warehouse_name.focus()
+            // }else{
+            //     to_warehouse_name.style.borderColor = "";
+            // }
+
+            // // if(to_Room_name.value.length == 0){
+            // //     strTemp += "From Room  is required. <br>"
+            // //     to_Room_name.style.borderColor = "red";
+            // //     to_Room_name.focus()
+            // // }else{
+            // //     to_Room_name.style.borderColor = "";
+            // // }
 
             
 
@@ -148,48 +148,48 @@
     
 
 
-            var prod_qty = document.getElementsByName("to_prod_qty");
-            var x = 1;
-            for (let index = 0; index < prod_qty.length; index++) {
-                const inputElement  = prod_qty[index];
+            // var prod_qty = document.getElementsByName("to_prod_qty");
+            // var x = 1;
+            // for (let index = 0; index < prod_qty.length; index++) {
+            //     const inputElement  = prod_qty[index];
 
-                if(inputElement.value.length == 0){
-                    modal.style.display = "none";
-                    strTemp += x + ". Quantity  is required. <br>"
-                    inputElement.style.borderColor = "red";
-                    inputElement.focus()
-                }else{
-                    inputElement.style.borderColor = "";
-                }
-                x++;
-            }
-
-
+            //     if(inputElement.value.length == 0){
+            //         modal.style.display = "none";
+            //         strTemp += x + ". Quantity  is required. <br>"
+            //         inputElement.style.borderColor = "red";
+            //         inputElement.focus()
+            //     }else{
+            //         inputElement.style.borderColor = "";
+            //     }
+            //     x++;
+            // }
 
 
-            var table = document.getElementById("transfer_tbl_new");
-            var noofrow = table.rows.length -2;
+
+
+            // var table = document.getElementById("transfer_tbl_new");
+            // var noofrow = table.rows.length -2;
             
-            if(noofrow == 0){
-                strTemp += "Product list is empty. <br>"
-                table.style.borderColor = "red";
-                document.getElementById("product_code").focus()
-            }else{
-                table.style.borderColor = "";
-            }
+            // if(noofrow == 0){
+            //     strTemp += "Product list is empty. <br>"
+            //     table.style.borderColor = "red";
+            //     document.getElementById("product_code").focus()
+            // }else{
+            //     table.style.borderColor = "";
+            // }
 
-            if(strTemp.length > 0){
-                modal.style.display = "none";
-                Swal.fire(
-                'Required ',
-                "<h5>" + strTemp + "</h5>",
-                'warning'
-                )
-                return;
-            }
+            // if(strTemp.length > 0){
+            //     modal.style.display = "none";
+            //     Swal.fire(
+            //     'Required ',
+            //     "<h5>" + strTemp + "</h5>",
+            //     'warning'
+            //     )
+            //     return;
+            // }
   
          document.getElementById("form").submit();
-         modal.style.display = "none";
+        //  modal.style.display = "none";
         Swal.fire({
         title: "Loading...",
         html: "Please wait a moment",
@@ -210,170 +210,170 @@
 
           function showConfirmation() {
 
-            clearModalContent();
+            // clearModalContent();
             
-            var html = '';
-            var NodeList = document.getElementsByName("product_code3");
-            var NodeList2 = document.getElementsByName("prod_name");
-            var from_prod_qty = document.getElementsByName("from_prod_qty");
-            var from_prod_level = document.getElementsByName("from_prod_level2");
+            // var html = '';
+            // var NodeList = document.getElementsByName("product_code3");
+            // var NodeList2 = document.getElementsByName("prod_name");
+            // var from_prod_qty = document.getElementsByName("from_prod_qty");
+            // var from_prod_level = document.getElementsByName("from_prod_level2");
 
-            var to_prod_qty = document.getElementsByName("to_prod_qty");
-            var to_prod_level = document.getElementsByName("to_prod_level");
+            // var to_prod_qty = document.getElementsByName("to_prod_qty");
+            // var to_prod_level = document.getElementsByName("to_prod_level");
 
-            var unit = document.getElementsByName("unit");
-            var batch_code = document.getElementsByName("batch_code");
-            var product_date = document.getElementsByName("product_date");
-            var expiry_date = document.getElementsByName("expiry_date");
-
-
-            var RoomAssigned = document.getElementsByName("RoomAssigned");
-            var ToRoomAssigned = document.getElementsByName("ToRoomAssigned");
+            // var unit = document.getElementsByName("unit");
+            // var batch_code = document.getElementsByName("batch_code");
+            // var product_date = document.getElementsByName("product_date");
+            // var expiry_date = document.getElementsByName("expiry_date");
 
 
-            var nodeVal = '';
-            var productName = '';
-            var valprod_unit = '';
-            var valprod_qty = '';
-            var valstock = '';
-            for (var x = 0; x < NodeList.length; x++) {
-                nodeVal = NodeList[x].value;
-                productName = NodeList2[x].value;
-                prod_qty = from_prod_qty[x].value;
-                frombay = from_prod_level[x].value;
+            // var RoomAssigned = document.getElementsByName("RoomAssigned");
+            // var ToRoomAssigned = document.getElementsByName("ToRoomAssigned");
 
-                valunit = unit[x].value;
-                valbatch_code = batch_code[x].value;
-                valproduct_date = product_date[x].value;
-                valexpiry_date = expiry_date[x].value;
-                valRoomAssigned = RoomAssigned[x].value;
-                valToRoomAssigned = ToRoomAssigned[x].value;
+
+            // var nodeVal = '';
+            // var productName = '';
+            // var valprod_unit = '';
+            // var valprod_qty = '';
+            // var valstock = '';
+            // for (var x = 0; x < NodeList.length; x++) {
+            //     nodeVal = NodeList[x].value;
+            //     productName = NodeList2[x].value;
+            //     prod_qty = from_prod_qty[x].value;
+            //     frombay = from_prod_level[x].value;
+
+            //     valunit = unit[x].value;
+            //     valbatch_code = batch_code[x].value;
+            //     valproduct_date = product_date[x].value;
+            //     valexpiry_date = expiry_date[x].value;
+            //     valRoomAssigned = RoomAssigned[x].value;
+            //     valToRoomAssigned = ToRoomAssigned[x].value;
                 
 
-                toqty = to_prod_qty[x].value;
+            //     toqty = to_prod_qty[x].value;
 
-                const selectedIndex = to_prod_level[x].selectedIndex;
-                const selectedValue = to_prod_level[x].value;
-                tobay = to_prod_level[x].options[selectedIndex].text;
-                // tobay = to_prod_level[x].value;
+            //     const selectedIndex = to_prod_level[x].selectedIndex;
+            //     const selectedValue = to_prod_level[x].value;
+            //     tobay = to_prod_level[x].options[selectedIndex].text;
+            //     // tobay = to_prod_level[x].value;
     
 
-                html += '<tr>';
-                html += '<td>';
-                html += '<p>' + nodeVal + '</p>';
-                html += '</td>';
+            //     html += '<tr>';
+            //     html += '<td>';
+            //     html += '<p>' + nodeVal + '</p>';
+            //     html += '</td>';
 
-                html += '<td>';
-                html += productName;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += productName;
+            //     html += '</td>';
 
-                html += '<td>';
-                html += prod_qty;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += prod_qty;
+            //     html += '</td>';
 
 
-                html += '<td>';
-                html += valRoomAssigned;
-                html += '</td>';
-
-                
-
-                html += '<td>';
-                html += frombay;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += valRoomAssigned;
+            //     html += '</td>';
 
                 
 
-                html += '<td>';
-                html += toqty;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += frombay;
+            //     html += '</td>';
 
-                html += '<td>';
-                html += valunit;
-                html += '</td>';
+                
 
-                html += '<td>';
-                html += valbatch_code;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += toqty;
+            //     html += '</td>';
 
-                html += '<td>';
-                html += valproduct_date;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += valunit;
+            //     html += '</td>';
 
-                html += '<td>';
-                html += valexpiry_date;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += valbatch_code;
+            //     html += '</td>';
 
+            //     html += '<td>';
+            //     html += valproduct_date;
+            //     html += '</td>';
 
-                html += '<td>';
-                html += valToRoomAssigned;
-                html += '</td>';
-
-
-                html += '<td>';
-                html += tobay;
-                html += '</td>';
+            //     html += '<td>';
+            //     html += valexpiry_date;
+            //     html += '</td>';
 
 
-                html += '</tr>';
-            }
-
-            var htmlfinal = "";
-            htmlfinal += '<thead class="thead-primary">';
-            htmlfinal += '<tr>';
-            htmlfinal += '<th scope="col">Item Code </th>';
-            htmlfinal += '<th scope="col">Item Description </th>';
-            htmlfinal += '<th colspan="3"><center>FROM</center></th>';
-            htmlfinal += '<th colspan="8"><center>To</center></th>';
-            htmlfinal += '</tr>';
-            htmlfinal += '<tr>';
-            htmlfinal += '<th scope="col"></th>';
-            htmlfinal += '<th scope="col"></th>';
-            htmlfinal += '<th scope="col">In Stock </th>';
-            htmlfinal += '<th scope="col">Room </th>';
-            htmlfinal += '<th scope="col">Bin </th>';
-            htmlfinal += '<th scope="col">Quantity </th>';
-            htmlfinal += '<th scope="col">Unit of Measure</th>';
-            htmlfinal += '<th scope="col">Batch Code</th>';
-            htmlfinal += '<th scope="col">Production date</th>';
-            htmlfinal += '<th scope="col">Expiry date</th>';
-            htmlfinal += '<th scope="col">Room</th>';
-            htmlfinal += '<th scope="col">Bin </th>';
-            htmlfinal += '</tr>';
-            htmlfinal += '</thead>';
-            htmlfinal += '<tbody id="tblPage_new_modal">';
-            htmlfinal += html;
-            htmlfinal += '</tbody>';
-
-            var modal = document.getElementById("myModal");
-            var span = document.getElementsByClassName("close")[0];
+            //     html += '<td>';
+            //     html += valToRoomAssigned;
+            //     html += '</td>';
 
 
-            modal.style.display = "block";
-            span.onclick = function () {
-                modal.style.display = "none";
-            };
+            //     html += '<td>';
+            //     html += tobay;
+            //     html += '</td>';
 
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "block";
-                }
-            };
+
+            //     html += '</tr>';
+            // }
+
+            // var htmlfinal = "";
+            // htmlfinal += '<thead class="thead-primary">';
+            // htmlfinal += '<tr>';
+            // htmlfinal += '<th scope="col">Item Code </th>';
+            // htmlfinal += '<th scope="col">Item Description </th>';
+            // htmlfinal += '<th colspan="3"><center>FROM</center></th>';
+            // htmlfinal += '<th colspan="8"><center>To</center></th>';
+            // htmlfinal += '</tr>';
+            // htmlfinal += '<tr>';
+            // htmlfinal += '<th scope="col"></th>';
+            // htmlfinal += '<th scope="col"></th>';
+            // htmlfinal += '<th scope="col">In Stock </th>';
+            // htmlfinal += '<th scope="col">Room </th>';
+            // htmlfinal += '<th scope="col">Bin </th>';
+            // htmlfinal += '<th scope="col">Quantity </th>';
+            // htmlfinal += '<th scope="col">Unit of Measure</th>';
+            // htmlfinal += '<th scope="col">Batch Code</th>';
+            // htmlfinal += '<th scope="col">Production date</th>';
+            // htmlfinal += '<th scope="col">Expiry date</th>';
+            // htmlfinal += '<th scope="col">Room</th>';
+            // htmlfinal += '<th scope="col">Bin </th>';
+            // htmlfinal += '</tr>';
+            // htmlfinal += '</thead>';
+            // htmlfinal += '<tbody id="tblPage_new_modal">';
+            // htmlfinal += html;
+            // htmlfinal += '</tbody>';
+
+            // var modal = document.getElementById("myModal");
+            // var span = document.getElementsByClassName("close")[0];
+
+
+            // modal.style.display = "block";
+            // span.onclick = function () {
+            //     modal.style.display = "none";
+            // };
+
+            // window.onclick = function (event) {
+            //     if (event.target == modal) {
+            //         modal.style.display = "block";
+            //     }
+            // };
 
   
 
-            var modalContent = document.getElementById("purchases_tbl_modal");
-            modalContent.innerHTML = "";
+            // var modalContent = document.getElementById("purchases_tbl_modal");
+            // modalContent.innerHTML = "";
 
         
-            document.getElementById("dateRec").innerHTML = document.getElementById("date").value;
-            document.getElementById("houseware").innerHTML = document.getElementById("transfer_from_warehouse").value;
-            // document.getElementById("moor").innerHTML = document.getElementById("FromRoom_name").value;
+            // document.getElementById("dateRec").innerHTML = document.getElementById("date").value;
+            // document.getElementById("houseware").innerHTML = document.getElementById("transfer_from_warehouse").value;
+            // // document.getElementById("moor").innerHTML = document.getElementById("FromRoom_name").value;
 
-            document.getElementById("to_houseware").innerHTML = document.getElementById("to_warehouse").value;
-            // document.getElementById("to_moor").innerHTML = document.getElementById("ToRoom_name").value;
+            // document.getElementById("to_houseware").innerHTML = document.getElementById("to_warehouse").value;
+            // // document.getElementById("to_moor").innerHTML = document.getElementById("ToRoom_name").value;
 
-            modalContent.innerHTML = htmlfinal;
+            // modalContent.innerHTML = htmlfinal;
             
         }
 
@@ -492,7 +492,7 @@
                                                         
                                                         <div class="col-xl-3 col-sm-6">
                                                             <div class="form-group">
-                                                                <label for="invoice_no">From Room<span
+                                                                <label for="invoice_no">From Area<span
                                                                         class="text-red">*</span></label>
                                                                 <!-- <select class="form-control" name="FromRoom_name"
                                                                     id="FromRoom_name" onchange="showTextbox()" required>
@@ -519,156 +519,10 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        
-                                                        
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Requested By</label>
-                                                                <input type="text" class="form-control" name="ReqBy" id="ReqBy">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Date of Request</label>
-                                                                <input type="date" class="form-control" name="dateofreq" id="dateofreq">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">PO number</label>
-                                                                <input type="text" class="form-control" name="PO_number" id="PO_number">
-                                                            </div>
-                                                        </div>
-
+            
                                                     </div>
 
-                                                    <div class="row mb-3">
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="invoice_no">Type of Services </label>
-                                                                <!-- <select class="form-control" name="typeservices"
-                                                                    id="typeservices" required>
-                                                                    <option value="F">Freight</option>
-                                                                    <option value="HI">Handling In</option>
-                                                                    <option value="S">Stripping</option>
-                                                                    <option value="PA">Put Away</option>
-                                                                    <option value="OTH">Others</option>
-                                                                </select> -->
-                                                                <br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Freight">
-                                                                <label for="Freight"> Freight</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Handling In">
-                                                                <label for="HandlingIn"> Handling In</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Handling Out">
-                                                                <label for="HandlingOut"> Handling Out</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Stripping">
-                                                                <label for="Stripping"> Stripping</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Stuffing">
-                                                                <label for="Stuffing"> Stuffing</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Barcoding">
-                                                                <label for="Barcoding"> Barcoding</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Repacking">
-                                                                <label for="Repacking"> Repacking</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Reprocessing">
-                                                                <label for="Reprocessing"> Reprocessing</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Stickering">
-                                                                <label for="Stickering"> Stickering</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" onclick="datahceck()" value="Sorting">
-                                                                <label for="Sorting"> Sorting</label><br>
-
-                                                                <input type="hidden" class="form-check-input" id="typeservicesData" name="typeservicesData">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="invoice_no">Type of Vehicle  <span
-                                                                        class="text-red">*</span></label>
-                                                                <select class="form-control" name="typevehicle"
-                                                                    id="typevehicle" required>
-                                                                    <option value="4WH">4 WHEELER</option>
-                                                                    <option value="6WH">6 WHEELER</option>
-                                                                    <option value="FWD">FORWARD</option>
-                                                                    <option value="10WH">10 WHEELER</option>
-                                                                    <option value="10FT">10 FOOTER</option>
-                                                                    <option value="20FT">20 FOOTER</option>
-                                                                    <option value="40FT">40 FOOTER</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Destination</label>
-                                                                <input type="text" class="form-control" name="destination" id="destination">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Pick Up/Delivery Date</label>
-                                                                <input type="date" class="form-control" name="deliverydate" id="deliverydate">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Name of trucker/Driver</label>
-                                                                <input type="text" class="form-control" name="driver" id="driver">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Plate Number</label>
-                                                                <input type="text" class="form-control" name="plate" id="plate">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Van/Seal Number</label>
-                                                                <input type="text" class="form-control" name="van" id="can">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">D.R. / S.I Number</label>
-                                                                <input type="text" class="form-control" name="DRSI" id="DRSI">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">TIME START LOADING</label>
-                                                                <input type="time" class="form-control" name="TSU" id="TSU">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">TIME FINISH LOADING</label>
-                                                                <input type="time" class="form-control" name="TFU" id="TFU">
-                                                            </div>
-                                                        </div>
-
-
-
-
-
-
-                                                    </div>
-                                                    
+                                                  
                                                     
                                                     <div class="row mb-3">
                                                         <div class="col-xl-4 col-sm-6">
@@ -726,20 +580,14 @@
                                                                        <th></th>
                                                                        <th></th>
                                                                         <th><%= language.in_stock %> </th>
-                                                                        <!-- <th>Bin </th> -->
-                                                                        <th>Room </th>
+                                                                        <th>Area </th>
                                                                         <th>Level </th>
-                                                                        <th>Location </th>
+                                                                        <th>Rack </th>
                                                                         <th><%= language.quantity %>  </th>
                                                                         <th>Unit of Measure </th>
-                                                                        <th>Conversion</th>
-                                                                        <th>Batch Code </th>
-                                                                        <th>Production date </th>
-                                                                        <th>Expiry date </th>
-                                                                        <!-- <th>Bin </th> -->
-                                                                        <th>Room </th>
+                                                                        <th>Area </th>
                                                                         <th>Level</th>
-                                                                        <th>Location </th>
+                                                                        <th>Rack </th>
                                                                         <th>Action </th>
                                                                    
                                                                    </tr>
@@ -771,7 +619,7 @@
                                                     
                                                 </form>
                                                 <div class="row">
-                                                    <button class="btn btn-primary" onclick="showConfirmation()" type="submit"
+                                                    <button class="btn btn-primary" onclick="saveAndContinue()" type="submit"
                                                         id="purchase_submit"  >Pre Finalize </button>
                                                         <!-- <input class="btn btn-primary"  type="submit"
                                                         id="purchase_submit" onclick="showConfirmation()" ><%= language.submit %> </input> -->
@@ -887,35 +735,6 @@
         <%- include('./partials/script'); -%>
         
         <script>
-
-        // function SelectRoom(){
-                
-        //         var varibale = document.getElementById("transfer_from_warehouse").value;
-        //         var selectRoom = $('#FromRoom_name');
-
-        //         $.ajax({
-        //             url: '/warehousemap_Income/Rooms_data', 
-        //             method: 'POST',
-        //             data: { warehouse_name: varibale }, 
-        //             success: function(response) {
-
-                    
-        //                 selectRoom.empty();
-        //                     $.each(response, function(index, data) {
-        //                         var roomName = data.room_name;
-        //                         var roomCode = data.room_name
-        //                         var option = $('<option>').text(roomName).val(roomName).attr('roomcode', roomCode);;
-        //                         selectRoom.append(option);
-        //                     })
-
-
-                        
-        //             }
-        //         })
-
-                
-                
-        // }
 
         function SelectRoom() {
             var variable = document.getElementById("transfer_from_warehouse").value;
@@ -1287,57 +1106,57 @@
 
 
 
-            function ComputeConversion(x, c){
-                var stock = document.getElementById("from_prod_qty"+x);
-                var unit = document.getElementById("unit"+x);
-                var to_prod_qty = document.getElementById("to_prod_qty"+x);
-                var prod_cat = document.getElementById("prod_cat"+x);
-                var Primary_Units = document.getElementById("primary_unit"+x).value;
-                var Secondary_units = document.getElementById("secondary_unit"+x).value;
+            // function ComputeConversion(x, c){
+            //     var stock = document.getElementById("from_prod_qty"+x);
+            //     var unit = document.getElementById("unit"+x);
+            //     var to_prod_qty = document.getElementById("to_prod_qty"+x);
+            //     var prod_cat = document.getElementById("prod_cat"+x);
+            //     var Primary_Units = document.getElementById("primary_unit"+x).value;
+            //     var Secondary_units = document.getElementById("secondary_unit"+x).value;
     
-                var TotalQtyStock =0;
-                var UOM;
-                TotalQtyStock = stock.value;
-                UOM = Primary_Units;
-                if(prod_cat.value == "S"){
-                    TotalQtyStock = stock.value * c;
-                    UOM = Secondary_units;
-                }
-                stock.value = TotalQtyStock;
-                unit.value = UOM;
+            //     var TotalQtyStock =0;
+            //     var UOM;
+            //     TotalQtyStock = stock.value;
+            //     UOM = Primary_Units;
+            //     if(prod_cat.value == "S"){
+            //         TotalQtyStock = stock.value * c;
+            //         UOM = Secondary_units;
+            //     }
+            //     stock.value = TotalQtyStock;
+            //     unit.value = UOM;
                 
-            }
+            // }
 
-            function ComputeConversionI(x, c){
-                var stock = document.getElementById("from_prod_qty"+x);
-                var unit = document.getElementById("unit"+x);
-                var to_prod_qty = document.getElementById("to_prod_qty"+x);
-                var prod_cat = document.getElementById("prod_cat"+x);
-                var Primary_Units = document.getElementById("primary_unit"+x).value;
-                var Secondary_units = document.getElementById("secondary_unit"+x).value;
-                var New_Qty_Converted = document.getElementById("New_Qty_Converted"+x);
-                var Conver = document.getElementById("Conver"+x)
+            // function ComputeConversionI(x, c){
+            //     var stock = document.getElementById("from_prod_qty"+x);
+            //     var unit = document.getElementById("unit"+x);
+            //     var to_prod_qty = document.getElementById("to_prod_qty"+x);
+            //     var prod_cat = document.getElementById("prod_cat"+x);
+            //     var Primary_Units = document.getElementById("primary_unit"+x).value;
+            //     var Secondary_units = document.getElementById("secondary_unit"+x).value;
+            //     var New_Qty_Converted = document.getElementById("New_Qty_Converted"+x);
+            //     var Conver = document.getElementById("Conver"+x)
     
-                var TotalQtyStock =0;
-                var UOM;
-                var TotalQtyAdjustment = 0;
-                var TotalConver ;
+            //     var TotalQtyStock =0;
+            //     var UOM;
+            //     var TotalQtyAdjustment = 0;
+            //     var TotalConver ;
 
-                TotalQtyStock = to_prod_qty.value;
-                TotalQtyAdjustment = to_prod_qty.value;
-                TotalConver = TotalQtyAdjustment*c + " " + Secondary_units
+            //     TotalQtyStock = to_prod_qty.value;
+            //     TotalQtyAdjustment = to_prod_qty.value;
+            //     TotalConver = TotalQtyAdjustment*c + " " + Secondary_units
                
-                if(prod_cat.value == "S"){
-                    TotalQtyStock = to_prod_qty.value / c;
-                    TotalQtyAdjustment = to_prod_qty.value / c
-                    TotalConver = TotalQtyAdjustment + " " + Primary_Units
-                }
-                New_Qty_Converted.value = TotalQtyStock;
-                Conver.value = TotalConver;
-                // stock.value = TotalQtyStock;
-                // unit.value = UOM;
-                // console.log(TotalQtyAdjustment + " <> " + adjust_qty + " <> " + c )
-            }
+            //     if(prod_cat.value == "S"){
+            //         TotalQtyStock = to_prod_qty.value / c;
+            //         TotalQtyAdjustment = to_prod_qty.value / c
+            //         TotalConver = TotalQtyAdjustment + " " + Primary_Units
+            //     }
+            //     New_Qty_Converted.value = TotalQtyStock;
+            //     Conver.value = TotalConver;
+            //     // stock.value = TotalQtyStock;
+            //     // unit.value = UOM;
+            //     // console.log(TotalQtyAdjustment + " <> " + adjust_qty + " <> " + c )
+            // }
 
 
             function RoomProducts(x){
@@ -1380,159 +1199,357 @@
                 // alert(warehouse + " <> " + room + " <> " + levelType.value)
                 var levels = [];
                 let outputArray = [];
-                if(warehouse == "Pasig"){
+                if(warehouse == "Main"){
                     switch(room){
-                        case "Ambient":
+                        case "Rack 1":
 
                             if(levelType.value == 1){   
                                 const letterRanges = [
-                                    { letter: 'A', min: 1, max: 54 },
-                                    { letter: 'B', min: 55, max: 108 },
-                                    { letter: 'C', min: 109, max: 162 },
-                                    { letter: 'D', min: 163, max: 216 },
-                                    { letter: 'E', min: 217, max: 270 },
-                                    { letter: 'F', min: 271, max: 324 },
-                                    { letter: 'G', min: 325, max: 362 },
-                                    { letter: 'H', min: 363, max: 400 },
-                                    { letter: 'I', min: 401, max: 438 },
-                                    { letter: 'J', min: 439, max: 476 }
+                                    { letter: 'A' },
+                                    { letter: 'B' },
+                                    { letter: 'C' },
+                                    { letter: 'D' },
+                                    { letter: 'E' },
+                                    { letter: 'F'},
+                                    { letter: 'G' },
+                                    { letter: 'H' },
+                                    { letter: 'I' },
+                                    { letter: 'J'},
+                                    { letter: 'K'},
+                                    { letter: 'L'},
+                                    { letter: 'M'},
+                                    { letter: 'N'},
+                                    { letter: 'O'},
+                                    { letter: 'P'},
+                                    { letter: 'Q'},
+                                    { letter: 'R'},
+                                    { letter: 'S'},
+                                    { letter: 'T'},
+                                    { letter: 'U'},
+                                    { letter: 'V'},
+                                    { letter: 'W'},
+                                    { letter: 'X'},
+                                    { letter: 'Y'},
+                                    { letter: 'Z'}
                                 ];
 
                                 for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
+                                    const { letter } = range;
+                                    
+                                        levels.push(letter);
+                                    
                                 }
 
                             }else if(levelType.value == 2){
                                 const letterRanges = [
-                                { letter: 'A', min: 477, max: 530 },
-                                { letter: 'B', min: 531, max: 584 },
-                                { letter: 'C', min: 585, max: 638 },
-                                { letter: 'D', min: 639, max: 692 },
-                                { letter: 'E', min: 693, max: 746 },
-                                { letter: 'F', min: 747, max: 800 },
-                                { letter: 'G', min: 801, max: 838 },
-                                { letter: 'H', min: 839, max: 876 },
-                                { letter: 'I', min: 877, max: 914 },
-                                { letter: 'J', min: 915, max: 952 }
+                                { letter: 'A' },
+                                { letter: 'B' },
+                                { letter: 'C' },
+                                { letter: 'D' },
+                                { letter: 'E' },
+                                { letter: 'F'},
+                                { letter: 'G' },
+                                { letter: 'H' },
+                                { letter: 'I' },
+                                { letter: 'J'},
+                                { letter: 'K'},
+                                { letter: 'L'},
+                                { letter: 'M'},
+                                { letter: 'N'},
+                                { letter: 'O'},
+                                { letter: 'P'},
+                                { letter: 'Q'},
+                                { letter: 'R'},
+                                { letter: 'S'},
+                                { letter: 'T'},
+                                { letter: 'U'},
+                                { letter: 'V'},
+                                { letter: 'W'},
+                                { letter: 'X'},
+                                { letter: 'Y'},
+                                { letter: 'Z'}
                                 ];
 
                                 for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
+                                    const { letter} = range;
+                                    
+                                        levels.push(letter);
+                                    
                                 }
                             }else if(levelType.value == 3){
                                 const letterRanges = [
-                                { letter: 'A', min: 953, max: 1006 },
-                                { letter: 'B', min: 1007, max: 1060 },
-                                { letter: 'C', min: 1061, max: 1114 },
-                                { letter: 'D', min: 1115, max: 1168 },
-                                { letter: 'E', min: 1169, max: 1222 },
-                                { letter: 'F', min: 1223, max: 1276 },
-                                { letter: 'G', min: 1277, max: 1314 },
-                                { letter: 'H', min: 1315, max: 1352 },
-                                { letter: 'I', min: 1353, max: 1390 },
-                                { letter: 'J', min: 1391, max: 1428 }
+                                { letter: 'A' },
+                                { letter: 'B' },
+                                { letter: 'C' },
+                                { letter: 'D' },
+                                { letter: 'E' },
+                                { letter: 'F'},
+                                { letter: 'G' },
+                                { letter: 'H' },
+                                { letter: 'I' },
+                                { letter: 'J'},
+                                { letter: 'K'},
+                                { letter: 'L'},
+                                { letter: 'M'},
+                                { letter: 'N'},
+                                { letter: 'O'},
+                                { letter: 'P'},
+                                { letter: 'Q'},
+                                { letter: 'R'},
+                                { letter: 'S'},
+                                { letter: 'T'},
+                                { letter: 'U'},
+                                { letter: 'V'},
+                                { letter: 'W'},
+                                { letter: 'X'},
+                                { letter: 'Y'},
+                                { letter: 'Z'}
                                 ];
 
                                 for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
-                                }
-                            }else if(levelType.value == 4){
-                                const letterRanges = [
-                                { letter: 'A', min: 1429, max: 1482 },
-                                { letter: 'B', min: 1483, max: 1536 },
-                                { letter: 'C', min: 1537, max: 1590 },
-                                { letter: 'D', min: 1591, max: 1644 },
-                                { letter: 'E', min: 1645, max: 1698 },
-                                { letter: 'F', min: 1699, max: 1752 },
-                                { letter: 'G', min: 1753, max: 1790 },
-                                { letter: 'H', min: 1791, max: 1828 },
-                                { letter: 'I', min: 1829, max: 1868 },
-                                { letter: 'J', min: 1867, max: 1904 }
-                                ];
-
-                                for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
+                                    const { letter } = range;
+                                   
+                                        levels.push(letter);
+                                  
                                 }
                             }
 
                             
                         break;
-                        case "Enclosed":
-                        if(levelType.value == 1){   
-                                const letterRanges = [        
-                                    { letter: 'G', min: 1, max: 13 },
-                                    { letter: 'H', min: 14, max: 27 },
-                                    { letter: 'I', min: 28, max: 41 },
-                                    { letter: 'J', min: 42, max: 55 }
+                      
+                        case "Rack 2":
+
+                            if(levelType.value == 1){   
+                                const letterRanges = [
+                                    { letter: 'A' },
+                                    { letter: 'B' },
+                                    { letter: 'C' },
+                                    { letter: 'D' },
+                                    { letter: 'E' },
+                                    { letter: 'F'},
+                                    { letter: 'G' },
+                                    { letter: 'H' },
+                                    { letter: 'I' },
+                                    { letter: 'J'},
+                                    { letter: 'K'},
+                                    { letter: 'L'},
+                                    { letter: 'M'},
+                                    { letter: 'N'},
+                                    { letter: 'O'},
+                                    { letter: 'P'},
+                                    { letter: 'Q'},
+                                    { letter: 'R'},
+                                    { letter: 'S'},
+                                    { letter: 'T'},
+                                    { letter: 'U'},
+                                    { letter: 'V'},
+                                    { letter: 'W'},
+                                    { letter: 'X'},
+                                    { letter: 'Y'},
+                                    { letter: 'Z'}
                                 ];
 
                                 for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
+                                    const { letter } = range;
+                                    
+                                        levels.push(letter);
+                                    
                                 }
 
                             }else if(levelType.value == 2){
-                                const letterRanges = [        
-                                    { letter: 'G', min: 56, max: 68 },
-                                    { letter: 'H', min: 69, max: 82 },
-                                    { letter: 'I', min: 83, max: 96 },
-                                    { letter: 'J', min: 97, max: 110 }
+                                const letterRanges = [
+                                { letter: 'A' },
+                                { letter: 'B' },
+                                { letter: 'C' },
+                                { letter: 'D' },
+                                { letter: 'E' },
+                                { letter: 'F'},
+                                { letter: 'G' },
+                                { letter: 'H' },
+                                { letter: 'I' },
+                                { letter: 'J'},
+                                { letter: 'K'},
+                                { letter: 'L'},
+                                { letter: 'M'},
+                                { letter: 'N'},
+                                { letter: 'O'},
+                                { letter: 'P'},
+                                { letter: 'Q'},
+                                { letter: 'R'},
+                                { letter: 'S'},
+                                { letter: 'T'},
+                                { letter: 'U'},
+                                { letter: 'V'},
+                                { letter: 'W'},
+                                { letter: 'X'},
+                                { letter: 'Y'},
+                                { letter: 'Z'}
                                 ];
 
                                 for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
+                                    const { letter} = range;
+                                    
+                                        levels.push(letter);
+                                    
                                 }
                             }else if(levelType.value == 3){
-                                const letterRanges = [        
-                                    { letter: 'G', min: 111, max: 123 },
-                                    { letter: 'H', min: 124, max: 137 },
-                                    { letter: 'I', min: 138, max: 151 },
-                                    { letter: 'J', min: 152, max: 165 }
+                                const letterRanges = [
+                                { letter: 'A' },
+                                { letter: 'B' },
+                                { letter: 'C' },
+                                { letter: 'D' },
+                                { letter: 'E' },
+                                { letter: 'F'},
+                                { letter: 'G' },
+                                { letter: 'H' },
+                                { letter: 'I' },
+                                { letter: 'J'},
+                                { letter: 'K'},
+                                { letter: 'L'},
+                                { letter: 'M'},
+                                { letter: 'N'},
+                                { letter: 'O'},
+                                { letter: 'P'},
+                                { letter: 'Q'},
+                                { letter: 'R'},
+                                { letter: 'S'},
+                                { letter: 'T'},
+                                { letter: 'U'},
+                                { letter: 'V'},
+                                { letter: 'W'},
+                                { letter: 'X'},
+                                { letter: 'Y'},
+                                { letter: 'Z'}
                                 ];
 
                                 for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
-                                }
-                            }else if(levelType.value == 4){
-                                const letterRanges = [        
-                                    { letter: 'G', min: 166, max: 178 },
-                                    { letter: 'H', min: 179, max: 192 },
-                                    { letter: 'I', min: 193, max: 206 },
-                                    { letter: 'J', min: 207, max: 220 }
-                                ];
-
-                                for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
+                                    const { letter } = range;
+                                
+                                        levels.push(letter);
+                                
                                 }
                             }
+
+
+                            break;
+                        
+                        
+                        case "Parts":
+
+                        if(levelType.value == 1){   
+                            const letterRanges = [
+                                { letter: 'A' },
+                                { letter: 'B' },
+                                { letter: 'C' },
+                                { letter: 'D' },
+                                { letter: 'E' },
+                                { letter: 'F'},
+                                { letter: 'G' },
+                                { letter: 'H' },
+                                { letter: 'I' },
+                                { letter: 'J'},
+                                { letter: 'K'},
+                                { letter: 'L'},
+                                { letter: 'M'},
+                                { letter: 'N'},
+                                { letter: 'O'},
+                                { letter: 'P'},
+                                { letter: 'Q'},
+                                { letter: 'R'},
+                                { letter: 'S'},
+                                { letter: 'T'},
+                                { letter: 'U'},
+                                { letter: 'V'},
+                                { letter: 'W'},
+                                { letter: 'X'},
+                                { letter: 'Y'},
+                                { letter: 'Z'}
+                            ];
+
+                            for (const range of letterRanges) {
+                                const { letter } = range;
+                                
+                                    levels.push(letter);
+                                
+                            }
+
+                        }else if(levelType.value == 2){
+                            const letterRanges = [
+                            { letter: 'A' },
+                            { letter: 'B' },
+                            { letter: 'C' },
+                            { letter: 'D' },
+                            { letter: 'E' },
+                            { letter: 'F'},
+                            { letter: 'G' },
+                            { letter: 'H' },
+                            { letter: 'I' },
+                            { letter: 'J'},
+                            { letter: 'K'},
+                            { letter: 'L'},
+                            { letter: 'M'},
+                            { letter: 'N'},
+                            { letter: 'O'},
+                            { letter: 'P'},
+                            { letter: 'Q'},
+                            { letter: 'R'},
+                            { letter: 'S'},
+                            { letter: 'T'},
+                            { letter: 'U'},
+                            { letter: 'V'},
+                            { letter: 'W'},
+                            { letter: 'X'},
+                            { letter: 'Y'},
+                            { letter: 'Z'}
+                            ];
+
+                            for (const range of letterRanges) {
+                                const { letter} = range;
+                                
+                                    levels.push(letter);
+                                
+                            }
+                        }else if(levelType.value == 3){
+                            const letterRanges = [
+                            { letter: 'A' },
+                            { letter: 'B' },
+                            { letter: 'C' },
+                            { letter: 'D' },
+                            { letter: 'E' },
+                            { letter: 'F'},
+                            { letter: 'G' },
+                            { letter: 'H' },
+                            { letter: 'I' },
+                            { letter: 'J'},
+                            { letter: 'K'},
+                            { letter: 'L'},
+                            { letter: 'M'},
+                            { letter: 'N'},
+                            { letter: 'O'},
+                            { letter: 'P'},
+                            { letter: 'Q'},
+                            { letter: 'R'},
+                            { letter: 'S'},
+                            { letter: 'T'},
+                            { letter: 'U'},
+                            { letter: 'V'},
+                            { letter: 'W'},
+                            { letter: 'X'},
+                            { letter: 'Y'},
+                            { letter: 'Z'}
+                            ];
+
+                            for (const range of letterRanges) {
+                                const { letter } = range;
+                            
+                                    levels.push(letter);
+                            
+                            }
+                        }
+
+
                         break;
 
-                        case "AISLE":
-                        levels = [0];
-                        break;
                     }
                     
                 
@@ -1543,213 +1560,6 @@
                         selectlevel.innerHTML = optionsHtml;
                        
                     
-                }else if(warehouse == "Iloilo"){
-                    switch(room){
-                        case "Ambient":
-                        if(levelType.value == 1){   
-                                const letterRanges = [
-                                    { letter: 'A', min: 1, max: 54 },
-                                    { letter: 'B', min: 55, max: 108 },
-                                    { letter: 'C', min: 109, max: 145 }
-                                ];
-
-                                for (const range of letterRanges) {
-                                    const { letter, min, max } = range;
-                                    for (let i = min; i <= max; i++) {
-                                        levels.push(letter + i);
-                                    }
-                                }
-
-                            }
-                        break;
-                        
-                    }
-                    
-         
-                        var optionsHtml = '';
-                        levels.forEach(function (num) {
-                            optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                        });
-                        selectlevel.innerHTML = optionsHtml;
-                     
-                        
-                }else if(warehouse == "Bacolod"){
-                        switch(room){
-                            case "Ambient":
-                            if(levelType.value == 1){   
-                                    const letterRanges = [
-                                        { letter: 'A', min: 1, max: 54 },
-                                        { letter: 'B', min: 55, max: 60 },
-                                    ];
-
-                                    for (const range of letterRanges) {
-                                        const { letter, min, max } = range;
-                                        for (let i = min; i <= max; i++) {
-                                            levels.push(letter + i);
-                                        }
-                                    }
-
-                                }
-                            break;
-                            
-                        }
-                        
-                     
-                            var optionsHtml = '';
-                            levels.forEach(function (num) {
-                                optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                            });
-                            selectlevel.innerHTML = optionsHtml;
-                        
-                        
-                }else if(warehouse == "Cebu"){
-                        switch(room){
-                            case "Ambient":
-                            if(levelType.value == 1){   
-                                    const letterRanges = [
-                                        { letter: 'A', min: 1, max: 54 },
-                                        { letter: 'B', min: 55, max: 108 },
-                                        { letter: 'C', min: 109, max: 150 },
-                                    ];
-
-                                    for (const range of letterRanges) {
-                                        const { letter, min, max } = range;
-                                        for (let i = min; i <= max; i++) {
-                                            levels.push(letter + i);
-                                        }
-                                    }
-
-                                }
-                            break;
-                            
-                        }
-                        
-                     
-                            var optionsHtml = '';
-                            levels.forEach(function (num) {
-                                optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                            });
-                            selectlevel.innerHTML = optionsHtml;
-                 
-                        
-                }else if(warehouse == "Tacloban"){
-                        switch(room){
-                            case "Ambient":
-                            if(levelType.value == 1){   
-                                    const letterRanges = [
-                                        { letter: 'A', min: 1, max: 54 },
-                                        { letter: 'B', min: 55, max: 194 },
-                                    ];
-
-                                    for (const range of letterRanges) {
-                                        const { letter, min, max } = range;
-                                        for (let i = min; i <= max; i++) {
-                                            levels.push(letter + i);
-                                        }
-                                    }
-
-                                }
-                            break;
-                            
-                        }
-                        
-                 
-                            var optionsHtml = '';
-                            levels.forEach(function (num) {
-                                optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                            });
-                            selectlevel.innerHTML = optionsHtml;
-                     
-                        
-                }else if(warehouse == "Davao"){
-                        switch(room){
-                            case "Ambient":
-                            if(levelType.value == 1){   
-                                    const letterRanges = [
-                                        { letter: 'A', min: 1, max: 54 },
-                                        { letter: 'B', min: 55, max: 108 },
-                                        { letter: 'C', min: 109, max: 150 },
-                                    ];
-
-                                    for (const range of letterRanges) {
-                                        const { letter, min, max } = range;
-                                        for (let i = min; i <= max; i++) {
-                                            levels.push(letter + i);
-                                        }
-                                    }
-
-                                }
-                            break;
-                            
-                        }
-                        
-                 
-                            var optionsHtml = '';
-                            levels.forEach(function (num) {
-                                optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                            });
-                            selectlevel.innerHTML = optionsHtml;
-                    
-                        
-                }else if(warehouse == "CDO"){
-                        switch(room){
-                            case "Ambient":
-                            if(levelType.value == 1){   
-                                    const letterRanges = [
-                                        { letter: 'A', min: 1, max: 54 },
-                                        { letter: 'B', min: 55, max: 108 },
-                                        { letter: 'C', min: 109, max: 162 },
-                                        { letter: 'D', min: 163, max: 200 },
-                                    ];
-
-                                    for (const range of letterRanges) {
-                                        const { letter, min, max } = range;
-                                        for (let i = min; i <= max; i++) {
-                                            levels.push(letter + i);
-                                        }
-                                    }
-
-                                }
-                            break;
-                            
-                        }
-                        
-            
-                            var optionsHtml = '';
-                            levels.forEach(function (num) {
-                                optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                            });
-                            selectlevel.innerHTML = optionsHtml;
-                       
-                        
-                }else if(warehouse == "Zamboanga"){
-                        switch(room){
-                            case "Ambient":
-                            if(levelType.value == 1){   
-                                    const letterRanges = [
-                                        { letter: 'A', min: 1, max: 50 },
-                                    ];
-
-                                    for (const range of letterRanges) {
-                                        const { letter, min, max } = range;
-                                        for (let i = min; i <= max; i++) {
-                                            levels.push(letter + i);
-                                        }
-                                    }
-
-                                }
-                            break;
-                            
-                        }
-                        
-                      
-                            var optionsHtml = '';
-                            levels.forEach(function (num) {
-                                optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                            });
-                            selectlevel.innerHTML = optionsHtml;
-               
-                        
                 }
                
                 
@@ -1765,26 +1575,17 @@
                 var room = document.getElementById("ToRoomAssigned"+x).value;
                 
                 var Location;
-                if(warehouse == "Pasig"){
+                if(warehouse == "Main"){
                     // alert(room)
                     switch(room){
-                        case "Ambient":
-                        type = [1, 2 ,3, 4];
+                        case "Rack 1":
+                        type = [1, 2 ,3];
                         break;
-                        case "Enclosed":
-                        type = [1,2,3,4];
+                        case "Rack 2":
+                        type = [1,2,3];
                         break;
-                    }
-
-                        var optionsHtml = '';
-                        type.forEach(function (num) {
-                            optionsHtml += '<option value="' + num + '">' + num + '</option>';
-                        });
-                        levelType.innerHTML = optionsHtml;
-                }else {
-                    switch(room){
-                        case "Ambient":
-                        type = [1];
+                        case "Parts":
+                        type = [1,2,3];
                         break;
                     }
 
@@ -1793,7 +1594,7 @@
                             optionsHtml += '<option value="' + num + '">' + num + '</option>';
                         });
                         levelType.innerHTML = optionsHtml;
-                    } 
+                }
                     roomdataselected(x); 
             }
             //Primary
@@ -1856,13 +1657,9 @@
                         row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="from_prod_qty" id="from_prod_qty'+x+'" value="' + data.instock + '" readonly>'));
                         row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="RoomAssigned" id="RoomAssigned'+x+'" value="'+data.roomNamed+'" readonly>'));
                         row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="from_prod_leveling" value="' + data.level + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="from_prod_level2" value="' + data.isle+data.pallet + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="to_prod_qty" id="to_prod_qty'+ x +'" onkeyup="ComputeConversionI('+x+', '+data.maxPerUnit+'); ValidationForMaxQTY('+ x +'); checkingWarehouse('+x+','+data.product_code+');">'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="unit" id="unit'+x+'" value="" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="Conver" id="Conver'+x+'" value=""  readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 125px;" name="batch_code" value="'+data.batch_code+'" readonly>'));
-                        row.append($('<td>').html('<input type="date" class="form-control" style="width: 150px;" name="product_date" value="'+data.production_date+'" readonly>'));
-                        row.append($('<td>').html('<input type="date" class="form-control" style="width: 150px;" name="expiry_date" value="'+data.expiry_date+'" readonly>'));
+                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="from_prod_level2" value="' + data.rack + '" readonly>'));
+                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="to_prod_qty" id="to_prod_qty'+ x +'" onkeyup="ValidationForMaxQTY('+ x +'); checkingWarehouse('+x+','+data.product_code+');">'));
+                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 150px;" name="unit" id="unit'+x+'" value="'+data.unit+'" readonly>'));
                         row.append($('<td>').html('<select class="form-control" name="ToRoomAssigned" id="ToRoomAssigned' + x + '" onchange="roomdataselected('+x+'); TypeList('+x+');" style="width: 150px;"></select>'));
                         row.append($('<td>').html('<select class="form-control" name="type" level="type' + x + '" id="type' + x + '" style="width: 150px;" onchange="roomdataselected('+x+')"></select>'));
                         row.append($('<td>').html('<select class="form-control" name="to_prod_level" level="levelOslie" id="to_prod_level' + x + '" style="width: 150px;" onchange="checkingWarehouse('+x+','+data.product_code+')"></select>'));
@@ -2002,7 +1799,7 @@
 
                         
                         $('#tblPage_new').append(row);
-                        ComputeConversion(x, data.maxPerUnit);
+
                         checkingWarehouse(x, data.product_code)
                         
                         RoomProducts(x);
@@ -2033,247 +1830,7 @@
             });
 
 
-            //secondary
-            $(document).ready(function() {
-                $('#product_code2').on('keydown', function(e) {
-                if (e.which === 13) {
-                    e.preventDefault();
-                    return false;
-                    }
-                });
-                
-            $('#product_code2').on('input', function() {
-                var secondarycode = $(this).val();
-                var FromWarehouse_data = $('#transfer_from_warehouse').val();
-                var FromRooms_data = $('#FromRoom_name').val();
-                var isProductExists = false;
 
-                $('#tblPage_new tr').each(function() {
-                var existingProductCode = $(this).find('td:nth-child(2)').text();
-                if (existingProductCode === secondarycode) {
-                    isProductExists = true;
-                    return false;
-                }
-                });
-                
-                if (!isProductExists) {
-                
-                $.ajax({
-                    url: '/transfer/barcode_scanner2', 
-                    method: 'POST',
-                    data: { secondary_code: secondarycode, FromWareHouse: FromWarehouse_data,  FromRoom: FromRooms_data }, // Pass the product code as a parameter
-                    success: function(response) {
-                    
-                    $.each(response, function(index, data) {
-                        if(data.instock > 0){
-                        var row = $('<tr>');
-                        const levelData = data.level === null ? 0 : data.level;
-                        const isleData =  data.isle === null ? 0 : data.isle;
-                        const palletData =  data.pallet === null ? 0 : data.pallet;  
-                        
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 125px;" name="product_code3" id="product_code3'+ x +'" value="' + data.product_code + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 355px;" name="prod_name" id="prod_name'+ x +'" value="' + data.name + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_qty" value="' + data.instock + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_level" value="' + levelData + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_isle" value="' + isleData + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_pallet" value="' + palletData + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="to_prod_qty" id="to_prod_qty'+ x +'" onkeyup="ValidationForMaxQTY('+ x +')"  >'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="unit" value="' + data.unit + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 125px;" name="batch_code" value="">'));
-                        var levelDropdown = $('<select class="form-control"  style="width: 85px;" name="to_prod_level" id="to_prod_level'+ x +'" >');
-                        var levels = [1, 2, 3, 4]; 
-                        $.each(levels, function(levelIndex, levelValue) {
-                        var option = $('<option>').text(levelValue);
-                        levelDropdown.append(option);
-                        });
-                        row.append($('<td>').append(levelDropdown));
-                        
-                        var IsleDropdown = $('<select class="form-control" style="width: 85px;" name="to_prod_isle"  id="to_prod_isle'+ x +'" >');
-                        var Isle = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]; 
-                        $.each(Isle, function(IsleIndex, IsleValue) {
-                        var option = $('<option>').text(IsleValue);
-                        IsleDropdown.append(option);
-                        });
-                        row.append($('<td>').append(IsleDropdown));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="to_prod_pallet"  id="to_prod_pallet'+ x +'" onchange="checkingWarehouse(' + x + ')" required >'));
-                        $('#tblPage_new').append(row);
-                        
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'primary_code',
-                            name: 'primary_code',
-                            value: data.primary_code
-                        }).appendTo('form');
-                        
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'secondary_code',
-                            name: 'secondary_code',
-                            value: data.secondary_code
-                        }).appendTo('form');
-                        
-                        
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'secondary_unit',
-                            name: 'secondary_unit',
-                            value: data.secondary_unit
-                        }).appendTo('form');
-
-
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'MaxStocks_data'+x,
-                            name: 'MaxStocks_data',
-                            value: data.maxProducts
-                        }).appendTo('form');
-
-
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'MaxStocks_data2'+x,
-                            name: 'MaxStocks_data2',
-                            value: data.maxProducts
-                        }).appendTo('form');
-
-                        x++;
-                    }
-                    
-                    });
-                    
-                    // Clear the product code input field
-                    $("#product_code2").val('');
-                    },
-                    error: function(xhr, status, error) {
-                    // Handle the error appropriately
-                    }
-                });
-                }
-            });
-            });
-
-            //product
-
-            $(document).ready(function() {
-                $('#product_code4').on('keydown', function(e) {
-                if (e.which === 13) {
-                    e.preventDefault();
-                    return false;
-                    }
-                });
-                
-            $('#product_code4').on('input', function() {
-                var productcode = $(this).val();
-                var FromWarehouse_data = $('#transfer_from_warehouse').val();
-                var FromRooms_data = $('#FromRoom_name').val();
-                var isProductExists = false;
-
-                $('#tblPage_new tr').each(function() {
-                var existingProductCode = $(this).find('td:nth-child(2)').text();
-                if (existingProductCode === productcode) {
-                    isProductExists = true;
-                    return false;
-                }
-                });
-                
-                if (!isProductExists) {
-                
-                $.ajax({
-                    url: '/transfer/barcode_scanner3', 
-                    method: 'POST',
-                    data: { product_code: productcode, FromWareHouse: FromWarehouse_data,  FromRoom: FromRooms_data }, // Pass the product code as a parameter
-                    success: function(response) {
-                    
-                    $.each(response, function(index, data) {
-
-                        if(data.instock > 0){
-                        var row = $('<tr>');
-                        const levelData = data.level === null ? 0 : data.level;
-                        const isleData =  data.isle === null ? 0 : data.isle;
-                        const palletData =  data.pallet === null ? 0 : data.pallet;  
-                        
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 125px;" name="product_code3" id="product_code3'+ x +'" value="' + data.product_code + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 355px;" name="prod_name" id="prod_name'+ x +'" value="' + data.name + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_qty" value="' + data.instock + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_level" value="' + levelData + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_isle" value="' + isleData + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="from_prod_pallet" value="' + palletData + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="to_prod_qty" id="to_prod_qty'+ x +'" onkeyup="ValidationForMaxQTY('+ x +')"  >'));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="unit" value="' + data.unit + '" readonly>'));
-                        row.append($('<td>').html('<input type="text" class="form-control" style="width: 125px;" name="batch_code" value="">'));
-                        var levelDropdown = $('<select class="form-control"  style="width: 85px;" name="to_prod_level" id="to_prod_level'+ x +'" >');
-                        var levels = [1, 2, 3, 4]; 
-                        $.each(levels, function(levelIndex, levelValue) {
-                        var option = $('<option>').text(levelValue);
-                        levelDropdown.append(option);
-                        });
-                        row.append($('<td>').append(levelDropdown));
-                        
-                        var IsleDropdown = $('<select class="form-control" style="width: 85px;" name="to_prod_isle"  id="to_prod_isle'+ x +'" >');
-                        var Isle = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]; 
-                        $.each(Isle, function(IsleIndex, IsleValue) {
-                        var option = $('<option>').text(IsleValue);
-                        IsleDropdown.append(option);
-                        });
-                        row.append($('<td>').append(IsleDropdown));
-                        row.append($('<td>').html('<input type="text" class="form-control" name="to_prod_pallet"  id="to_prod_pallet'+ x +'" onchange="checkingWarehouse(' + x + ')" required >'));
-                        $('#tblPage_new').append(row);
-                        
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'primary_code',
-                            name: 'primary_code',
-                            value: data.primary_code
-                        }).appendTo('form');
-                        
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'secondary_code',
-                            name: 'secondary_code',
-                            value: data.secondary_code
-                        }).appendTo('form');
-                        
-                        
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'secondary_unit',
-                            name: 'secondary_unit',
-                            value: data.secondary_unit
-                        }).appendTo('form');
-
-
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'MaxStocks_data'+x,
-                            name: 'MaxStocks_data',
-                            value: data.maxProducts
-                        }).appendTo('form');
-
-
-                        $('<input>').attr({
-                            type: 'hidden',
-                            id: 'MaxStocks_data2'+x,
-                            name: 'MaxStocks_data2',
-                            value: data.maxProducts
-                        }).appendTo('form');
-
-                        x++;
-                    }
-                   
-                        
-                    });
-                    
-                    // Clear the product code input field
-                    $("#product_code4").val('');
-                    },
-                    error: function(xhr, status, error) {
-                    // Handle the error appropriately
-                    }
-                });
-                }
-            });
-            });
-            
         </script>
 
             <!--**********************************

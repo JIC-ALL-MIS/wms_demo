@@ -223,11 +223,11 @@ router.get("/view/add_adjustment", auth, async (req, res) => {
 router.post("/view/add_adjustment", auth, async(req, res) => {
     try{
         const {warehouse_name, date, prod_name, note, invoice } = req.body
-        
+
         if(typeof prod_name == "string"){
             var product_name_array = [req.body.prod_name]
             var level_array = [req.body.level]
-            var rack_array = [req.body.rack]
+            var rack_array = [req.body.level2]
             var stock_array = [req.body.stock]
             var types_array = [req.body.types]
             var adjust_qty_array = [req.body.adjust_qty]
@@ -241,7 +241,7 @@ router.post("/view/add_adjustment", auth, async(req, res) => {
         }else{
             var product_name_array = [...req.body.prod_name]
             var level_array = [...req.body.level]
-            var rack_array = [...req.body.rack]
+            var rack_array = [...req.body.level2]
             var stock_array = [...req.body.stock]
             var types_array = [...req.body.types]
             var adjust_qty_array = [...req.body.adjust_qty]
@@ -267,7 +267,7 @@ router.post("/view/add_adjustment", auth, async(req, res) => {
             newproduct[i].rack = value
         });
 
-        level_array.forEach((value, i) => {
+        level_array1.forEach((value, i) => {
             newproduct[i].level = value
         })
 
@@ -291,52 +291,30 @@ router.post("/view/add_adjustment", auth, async(req, res) => {
             newproduct[i].unit = value
         });
 
-        Secondary_units_array.forEach((value,i) => {
-            newproduct[i].secondary_unit = value
-        });
+       
 
         product_code_array.forEach((value,i) => {
             newproduct[i].product_code = value
         });
 
-        batch_code_array.forEach((value,i) => {
-            newproduct[i].batch_code = value
-        });
+       
 
-        expiry_date_array.forEach((value, i) => {
-            newproduct[i].expiry_date = value
-        })
-
-
-        production_date_array.forEach((value, i) => {
-            newproduct[i].production_date = value
-        })
-
-
-        prod_cat_array.forEach((value, i) => {
-            newproduct[i].prod_cat = value
-        })
 
         Rooms_array.forEach((value, i) => {
             newproduct[i].room_names = value
         })
 
-        maxPerUnit_array.forEach((value, i) => {
-            newproduct[i].maxPerUnit = value
+
+    
+        idfromtransaction_array.forEach((value, i) => {
+            newproduct[i].idfromtransaction = value
         })
-
-
-        CBM_array.forEach((value, i) => {
-            newproduct[i].CBM = value
-        })
-
 
         prod_invoice_array.forEach((value, i) =>{
             newproduct[i].invoice = value
         })
 
-        res.json(newproduct)
-        return
+    
         const newFilter = newproduct.filter(obj => obj.new_adjust_qty !== "0" && obj.new_adjust_qty !== "");
         var error = 0
         newFilter.forEach(data => {
@@ -352,15 +330,169 @@ router.post("/view/add_adjustment", auth, async(req, res) => {
             return res.redirect("back")
         }
 
-        const data = new adjustment_finished({ warehouse_name, date, product:newFilter, note, room: Room_name, invoice, JO_number, expiry_date, PO_number , RequestedBy: ReqBy, DateofRequest: dateofreq, typeservices : typeservicesData, destination, deliverydate, driver, plate, van, DRSI, typevehicle:typevehicle, TSU, TFU })
+        const data = new adjustment_finished({ warehouse_name, date, product:newFilter, note, invoice })
 
-        const adjustment_data = await data.save() 
+        const adjustment_data = await data.save() ;
+
+       
+        const promises = data.product.map(async(product_details) => {
+            
+            
+
+            if(product_details.adjust_qty > 0){
+                warehouse_data = await warehouse.findOne({ name: warehouse_name, room: product_details.room_names });
+                
+                const match_data = warehouse_data.product_details.map((data) => {
+                    if (product_details.types == "minus") {
+                        if (data.product_name == product_details.product_name  && data.level == product_details.level && data.rack == product_details.rack  && data.invoice == product_details.invoice && data.idfromtransaction == product_details.idfromtransaction) {
+                            data.product_stock = data.product_stock - product_details.adjust_qty
+                        }
+                    } else if(product_details.types == "add") {
+                        
+                        if (data.product_name == product_details.product_name && data.level == product_details.level && data.rack == product_details.rack && data.invoice == product_details.invoice && data.idfromtransaction == product_details.idfromtransaction) {
+                            data.product_stock = data.product_stock + product_details.adjust_qty
+                        }
+                    }
         
-        req.flash('success', `adjustment add successfull`)
-        res.redirect("/adjustment_finished/preview/" + adjustment_data._id)
+        
+                })
+            }
+
+
+            return warehouse_data;
+
+        })
+
+
+        Promise.all(promises)
+            .then(async (updatedWarehouseDataArray) => {
+                try {
+                    
+                    
+                    for (const warehouseData of updatedWarehouseDataArray) {
+                        
+                        await warehouseData.save();
+                    }
+                    
+            
+                    // const adjustment_data = await data.save()
+
+                    var product_list = data.product
+                    const master = await master_shop.find()
+                    const email_data = await email_settings.findOne()
+                    const supervisor_data = await supervisor_settings.find();
+
+                    let mailTransporter = nodemailer.createTransport({
+                        host: email_data.host,
+                        port: Number(email_data.port),
+                        secure: false,
+                        auth: {
+                            user: email_data.email,
+                            pass: email_data.password
+                        }
+                    });
+
+                    var arrayItems = "";
+                        var n;
+                        for (n in product_list) {
+                            arrayItems +=  '<tr>'+
+                                                '<td style="border: 1px solid black;">' + product_list[n].product_name + '</td>' +
+                                                '<td style="border: 1px solid black;">' + product_list[n].new_adjust_qty + '</td>' +
+                                                '<td style="border: 1px solid black;">' + product_list[n].unit + '</td>' +
+                                                '<td style="border: 1px solid black;">' + product_list[n].room_names + '</td>' +
+                                                '<td style="border: 1px solid black;">' + product_list[n].level + '</td>' +
+                                                '<td style="border: 1px solid black;">' + product_list[n].isle+product_list[n].pallet + '</td>' +
+                                                
+                                            '</tr>'
+                        }
+
+
+                        let mailDetails = {
+                            from: email_data.email,
+                            to: supervisor_data[0].RMSEmail,
+                            subject:'Sale Product Mail',
+                            attachments: [{
+                                filename: 'Logo.png',
+                                path: __dirname + '/../public' +'/upload/'+master[0].image,
+                                cid: 'logo'
+                           }],
+                            html:'<!DOCTYPE html>'+
+                                '<html><head><title></title>'+
+                                '</head><body>'+
+                                    '<div>'+
+                                        '<div style="display: flex; align-items: center; justify-content: center;">'+
+                                            '<div>'+
+                                                '<img src="cid:logo" class="rounded" width="66.5px" height="66.5px"></img>'+
+                                            '</div>'+
+                                        
+                                            '<div>'+
+                                                '<h2> '+ master[0].site_title +' </h2>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<hr class="my-3">'+
+                                        '<div>'+
+                                            '<h5 style="text-align: left;">'+
+                                                ' Order Number : '+ data.invoice +' '+
+                                                '<span style="float: right;">'+
+                                                    ' Order Date : '+ data.date +' '+
+                                                '</span>'+
+                                                
+                                            '</h5>'+
+                                        '</div>'+
+                                        '<table style="width: 100% !important;">'+
+                                            '<thead style="width: 100% !important;">'+
+                                                '<tr>'+
+                                                    '<th style="border: 1px solid black;"> Product Name </th>'+
+                                                    '<th style="border: 1px solid black;"> Quantity </th>'+
+                                                    '<th style="border: 1px solid black;"> Unit of measure </th>'+
+                                                    '<th style="border: 1px solid black;"> Room </th>'+
+                                                    '<th style="border: 1px solid black;"> Level </th>'+
+                                                    '<th style="border: 1px solid black;"> Location </th>'+
+                                                    
+                                                    
+                                                '</tr>'+
+                                            '</thead>'+
+                                            '<tbody style="text-align: center;">'+
+                                                ' '+ arrayItems +' '+
+                                            '</tbody>'+
+                                        '</table>'+
+                                        
+                                        
+                                        '<div>'+
+                                            '<strong> Regards </strong>'+
+                                            '<h5>'+ master[0].site_title +'</h5>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</body></html>'
+                        };
+                        
+                        mailTransporter.sendMail(mailDetails, function(err, data) {
+                            if(err) {
+                                console.log(err);
+                                console.log('Error Occurs');
+                            } else {
+                                console.log('Email sent successfully');
+                            }
+                        });
+
+                    req.flash('success', `Adjustment Finalize Successfully`)
+                    res.redirect("/adjustment_finished/view/")
+                } catch (error) {
+                    console.error(error);
+                    res.json({ error: 'An error occurred while saving data.' });
+                }
+            })
+            .catch((error) => {
+                // Handle any errors that might have occurred during the process.
+                console.error(error);
+                res.json({ error: 'An error occurred.' });
+            });
+        
+        // req.flash('success', `adjustment add successfull`)
+        // res.redirect("/adjustment_finished/view/")
     }catch(error){
         console.log(error);
-        res.status(200).json({ message: error.message })
+        res.json({ message: error.message })
     }
 })
 

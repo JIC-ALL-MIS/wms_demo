@@ -1376,12 +1376,6 @@ const transfers_data_finished = new mongoose.Schema({
         product_name: {
             type: String
         },
-        primary_code:{
-            type: String
-        },
-        secondary_code:{
-            type: String
-        },
         product_code:{
             type: String
         },
@@ -1391,11 +1385,8 @@ const transfers_data_finished = new mongoose.Schema({
         from_level:{
             type: Number  
         },
-        from_isle:{
+        from_rack:{
             type: String  
-        },
-        from_pallet:{
-            type: Number  
         },
         to_quantity:{
             type: Number
@@ -1403,41 +1394,10 @@ const transfers_data_finished = new mongoose.Schema({
         to_level:{
             type: Number
         },
-        to_isle:{
+        to_rack:{
             type: String
-        },
-        to_pallet:{
-            type: Number
-        },
-        maxProducts: {
-            type: Number,
-            default: 9999
         },
         unit:{
-            type: String
-        },
-        secondary_unit:{
-            type: String
-        },
-        batch_code:{
-            type: String
-        },
-        expiry_date: {
-            type: String
-        },
-        production_date: {
-            type: String
-        },
-        maxProducts:{
-            type: Number
-        },
-        maxPerUnit:{
-            type: Number
-        },
-        alertQTY:{
-            type: Number
-        },
-        prod_cat: {
             type: String
         },
         from_room_name:{
@@ -1446,63 +1406,20 @@ const transfers_data_finished = new mongoose.Schema({
         to_room_name:{
             type:String
         },
-        CBM : {
-            type: mongoose.Types.Decimal128
-        },
         from_invoice: {
             type: String
         },
         to_invoice: {
             type: String
+        },
+        from_idfromtransaction:{
+            type: String
+        },
+        to_idfromtransaction:{
+            type: String
         }
     }],
     note: {
-        type: String
-    },
-    expiry_date:{
-        type: String
-    },
-    finalize:{
-        type: String,
-        default: "False"
-    },
-    RequestedBy: {
-        type: String
-    },
-    DateofRequest: {
-        type: String
-    },
-    typeservices: {
-        type: String
-    },
-    typevehicle: {
-        type: String
-    },
-    destination: {
-        type: String
-    },
-    deliverydate: {
-        type: String
-    },
-    driver: {
-        type: String
-    },
-    plate: {
-        type: String
-    },
-    van: {
-        type: String
-    },
-    DRSI: {
-        type: String
-    },
-    PO_number: {
-        type: String
-    },
-    TSU: {
-        type: String
-    },
-    TFU: {
         type: String
     },
     isAllowEdit: {
@@ -1693,6 +1610,9 @@ const adjustment_data_finished = new mongoose.Schema({
             type: Number
         },
         invoice: {
+            type: String
+        },
+        idfromtransaction: {
             type: String
         }
     }],

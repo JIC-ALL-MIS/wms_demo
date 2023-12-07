@@ -213,7 +213,8 @@ router.post("/view/add_transfer", auth, async(req, res) => {
     try{
         
         const {date, from_warehouse, FromRoom_name, to_warehouse, ToRoom_name, prod_name, from_prod_qty, from_prod_level, from_prod_isle, from_prod_pallet, to_prod_qty, to_prod_level, to_prod_isle, to_prod_pallet, primary_code, secondary_code, product_code3, note, MaxStocks_data2, invoice, expiry_date,PO_number, ReqBy, dateofreq,typeservicesData, destination, deliverydate, driver, plate, van, DRSI, typevehicle, TSU, TFU} = req.body
-        
+        res.json(req.body)
+        return
         if(typeof prod_name == "string"){
             var product_name_array = [req.body.prod_name]
             
@@ -1269,7 +1270,7 @@ router.post("/barcode_scanner", async (req, res) => {
                 $unwind: "$product_details"
             },
             {
-                $match: { "product_details.primary_code": primary_code }
+                $match: { "product_details.product_code": primary_code }
             },
             {
                 $group: {
@@ -1280,8 +1281,7 @@ router.post("/barcode_scanner", async (req, res) => {
                     secondary_code: {$first: "$product_details.secondary_code" },
                     product_code: { $first: "$product_details.product_code" },
                     level: { $first: "$product_details.level" },
-                    isle: { $first: "$product_details.isle" },
-                    pallet: { $first: "$product_details.pallet" },
+                    rack: { $first: "$product_details.rack" },
                     unit: { $first: "$product_details.unit" },
                     secondary_unit: { $first: "$product_details.secondary_unit" },
                     storage: { $first: "$product_details.storage" },
