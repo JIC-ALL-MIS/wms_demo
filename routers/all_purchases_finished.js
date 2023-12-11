@@ -65,7 +65,7 @@ router.get("/view", auth, async (req, res) => {
                 suppliers_docs: { $first: "$suppliers_docs" },
                 total_product_quantity: { $sum: "$product.quantity" },
                 level: { $addToSet: "$product.level" },
-                isle: { $addToSet: "$product.isle" },
+                rack: { $addToSet: "$product.rack" },
                 pallet: { $addToSet: "$product.pallet" },
               }
               
@@ -88,7 +88,7 @@ router.get("/view", auth, async (req, res) => {
                 suppliers_docs: 1,
                 total_product_quantity: 1,
                 level: 1,
-                isle: 1,
+                rack: 1,
                 pallet: 1,
                 
               }
@@ -130,7 +130,7 @@ router.get("/view", auth, async (req, res) => {
                 suppliers_docs: { $first: "$suppliers_docs" },
                 total_product_quantity: { $sum: "$product.quantity" },
                 level: { $addToSet: "$product.level" },
-                isle: { $addToSet: "$product.isle" },
+                rack: { $addToSet: "$product.rack" },
                 pallet: { $addToSet: "$product.pallet" },
               }
               
@@ -153,7 +153,7 @@ router.get("/view", auth, async (req, res) => {
                 suppliers_docs: 1,
                 total_product_quantity: 1,
                 level: 1,
-                isle: 1,
+                rack: 1,
                 pallet: 1,
                 
               }

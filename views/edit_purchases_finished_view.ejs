@@ -94,40 +94,6 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="invoice_no">Supplier/Client Ref Number </label>
-                                                                <input type="text" name="SCRN" class="form-control" value="<%= purchases.SCRN %>"
-                                                                    id="SCRN" readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Requested By</label>
-                                                                <input type="text" class="form-control" name="ReqBy" id="ReqBy" value="<%= purchases.RequestedBy %>" readonly>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Date of Request</label>
-                                                                <input type="date" class="form-control" name="dateofreq" id="dateofreq" value="<%= purchases.DateofRequest %>" readonly>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">PO number</label>
-                                                                <input type="text" class="form-control" name="PO_number" value="<%= purchases.POnumber %>" readonly>
-                                                            </div>
-                                                        </div>
-
-
-
-                    
 
 
                                                         <div class="col-xl-3 col-sm-6">
@@ -161,161 +127,20 @@
                                                     </div>
 
 
-                                                    <div class="row mb-3">
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="invoice_no">Type of Services  <span
-                                                                        class="text-red">*</span></label><br>
-                                                                <!-- <select class="form-control" name="typeservices"
-                                                                    id="typeservices" disabled>
-                                                                    <option value="F" <%=purchases.typeservices=="F"
-                                                                    ? "selected" : "" %>>Freight</option>
-                                                                    <option value="HI" <%=purchases.typeservices=="HI"
-                                                                    ? "selected" : "" %>>Handling In</option>
-                                                                    <option value="S" <%=purchases.typeservices=="S"
-                                                                    ? "selected" : "" %>>Stripping</option>
-                                                                    <option value="PA" <%=purchases.typeservices=="PA"
-                                                                    ? "selected" : "" %>>Put Away</option>
-                                                                    <option value="OTH" <%=purchases.typeservices=="OTH"
-                                                                    ? "selected" : "" %>>Others</option>
-                                                                </select> -->
-
-
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Freight" disabled>
-                                                                <label for="Freight"> Freight</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Handling In" disabled>
-                                                                <label for="HandlingIn"> Handling In</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Handling Out" disabled>
-                                                                <label for="HandlingOut"> Handling Out</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Stripping" disabled>
-                                                                <label for="Stripping"> Stripping</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Stuffing" disabled>
-                                                                <label for="Stuffing"> Stuffing</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Barcoding" disabled>
-                                                                <label for="Barcoding"> Barcoding</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Repacking" disabled>
-                                                                <label for="Repacking"> Repacking</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Reprocessing" disabled>
-                                                                <label for="Reprocessing"> Reprocessing</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Stickering" disabled>
-                                                                <label for="Stickering"> Stickering</label><br>
-                                                                <input type="checkbox" class="form-check-input" id="typeservices" name="typeservices" value="Sorting" disabled>
-                                                                <label for="Sorting"> Sorting</label><br>
-
-
-                                                                <input type="hidden" class="form-check-input" id="typeservicesData" name="typeservicesData" value="<%= purchases.typeservices %>">
-
-                                                                
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="invoice_no">Type of Vehicle  <span
-                                                                        class="text-red">*</span></label>
-                                                                <select class="form-control" name="typevehicle"
-                                                                    id="typevehicle" disabled>
-                                                                    <option value="4WH" <%=purchases.typevehicle=="4WH"
-                                                                    ? "selected" : "" %>>4 WHEELER</option>
-                                                                    <option value="6WH" <%=purchases.typevehicle=="6WH"
-                                                                    ? "selected" : "" %>>6 WHEELER</option>
-                                                                    <option value="FWD" <%=purchases.typevehicle=="FWD"
-                                                                    ? "selected" : "" %>>FORWARD</option>
-                                                                    <option value="10WH" <%=purchases.typevehicle=="10WH"
-                                                                    ? "selected" : "" %>>10 WHEELER</option>
-                                                                    <option value="10FT" <%=purchases.typevehicle=="10FT"
-                                                                    ? "selected" : "" %>>10 FOOTER</option>
-                                                                    <option value="20FT" <%=purchases.typevehicle=="20FT"
-                                                                    ? "selected" : "" %>>20 FOOTER</option>
-                                                                    <option value="40FT" <%=purchases.typevehicle=="40FT"
-                                                                    ? "selected" : "" %>>40 FOOTER</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <!-- <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Destination</label>
-                                                                <input type="text" class="form-control" name="destination" id="destination" value="<%= //purchases.destination %>" readonly>
-                                                            </div>
-                                                        </div> -->
-
-
-                                                        <!-- <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Pick Up/Delivery Date</label>
-                                                                <input type="date" class="form-control" name="deliverydate" id="deliverydate" value="<%= //purchases.deliverydate %>" readonly>
-                                                            </div>
-                                                        </div> -->
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Name of trucker/Driver</label>
-                                                                <input type="text" class="form-control" name="driver" id="driver" value="<%= purchases.driver %>" readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Plate Number</label>
-                                                                <input type="text" class="form-control" name="plate" id="plate" value="<%= purchases.plate %>" readonly>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Van/Seal Number</label>
-                                                                <input type="text" class="form-control" name="van" id="can" value="<%= purchases.van %>" readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">D.R. / S.I Number</label>
-                                                                <input type="text" class="form-control" name="DRSI" id="DRSI" value="<%= purchases.DRSI %>" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">TIME START UNLOADING</label>
-                                                                <input type="time" class="form-control" name="TSU" id="TSU" value="<%= purchases.TSU %>" readonly>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-xl-3 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">TIME FINISH UNLOADING</label>
-                                                                <input type="time" class="form-control" name="TFU" id="TFU" value="<%= purchases.TFU %>" readonly>
-                                                            </div>
-                                                        </div>
-
-
-
-
-                                                    </div>
-
 
                                                     <div class="col-xl-12">
                                                         <div class="table-responsive">
                                                             <table class="table primary-table-bordered">
                                                                 <thead class="thead-primary">
                                                                     <tr>
-                                                                        <th scope="col">Item Code </th>
+                                                                        <th scope="col">Item Code / Serial No. </th>
                                                                         <th scope="col">Item Description </th>
-                                                                        <th scope="col">Primary Barcode </th>
-                                                                        <th scope="col">Batch Code </th>
-                                                                        <th scope="col">Production date </th>
-                                                                        <th scope="col">Expiry date </th>
                                                                         <th scope="col"><%= language.quantity %> </th>
                                                                         <th scope="col">Unit of Measure </th>
-                                                                        <th scope="col">Conversion</th>
-                                                                        <th scope="col">Room</th>
+                                                                        <th scope="col">Area</th>
                                                                         <th scope="col">Level </th>
                                                                         <th scope="col">Location </th>
+                                                  
                                                
                                                                     </tr>
                                                                 </thead>
@@ -336,38 +161,7 @@
                                                                             <td>
                                                                                 <input type="text" name="prod_name" class="form-control" style="width: 380px;" value="<%= users.product_name %>" readonly>
                                                                             </td>
-                                                                            
-                                                                            <td>
-                                                                            <div class="input-group"> 
-                                                                                <input type="text" name="primary_code" class="form-control" style="width: 150px;" id="primary_code<%= users.product_code+x %>" value="<%= users.primary_code %>" readonly> 
-                                                                            </div>
-                                                                            </td>
-
-
-                                                                            <td>
-                                                                                <div class="input-group"> 
-                                                                                    <input type="text" name="batch_code" class="form-control" style="width: 250px;" id="batch_code<%= users.product_code+x %>" value="<%= users.batch_code %>" readonly> 
-                                                                                </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="input-group"> 
-                                                                                    <input type="date" name="production_date" class="form-control" style="width: 150px;" id="production_date" value="<%= users.production_date %>" readonly> 
-                                                                                </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="input-group"> 
-                                                                                    <input type="date" name="expiry_date" class="form-control" style="width: 150px;" id="expiry_date" value="<%= users.expiry_date %>" readonly> 
-                                                                                </div>
-                                                                            </td>
-                                                                            
-                                                                            <!-- <td> -->
-                                                                            <!-- <div class="input-group">  -->
-                                                                                <input type="hidden" name="secondary_code" class="form-control" style="width: 150px;" id="secondary_code<%= users.product_code+x %>" value="<%= users.secondary_code %>" readonly> 
-                                                                            <!-- </div> -->
-                                                                            <!-- </td> -->
-
+                         
                                                                             
                                                                             
                                                                             
@@ -383,9 +177,6 @@
                                                                             </td>
 
 
-                                                                            <td>
-                                                                                <input type="text" name="test" name="Conver<%= x %>" class="form-control" style="width: 150px;" value="" readonly>
-                                                                            </td>
                                                                             
                                                                             <!-- <td> -->
                                                                                 <input type="hidden" name="prod_secondunit" class="form-control" style="width: 150px;" value="<%= users.secondary_unit %>" readonly>
@@ -399,7 +190,7 @@
                                                                              </td>
 
                                                                             <td>
-                                                                                <input type="text" name="prod_level" class="form-control" style="width: 150px;" value="<%= users.isle+users.pallet %>" readonly>
+                                                                                <input type="text" name="prod_level" class="form-control" style="width: 150px;" value="<%= users.rack %>" readonly>
                                                                              </td>
 
 
