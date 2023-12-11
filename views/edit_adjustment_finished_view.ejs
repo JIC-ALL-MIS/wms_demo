@@ -150,8 +150,7 @@
                                                                             <th scope="col">Item Code </th>
                                                                             <th scope="col">Item Description</th>
                                                                             <th scope="col"><%= language.adjust_qty %>  <span class="text-red">*</span></th>
-                                                                            <th scope="col">Batch Code</th>
-                                                                            <th scope="col">Expiry date </th>
+                                                                     
                                                                             <th><%= language.current_stock %> </th>
                                                                             <th><%= language.type %> </th>
                                                                             <th scope="col">Unit of Measure</th>
@@ -188,10 +187,10 @@
 
                                                                       
 
-
+                                                                        
                                                                         <% stock.forEach((stocks) => { %>
-                                                                           
-                                                                            <% if(adjustment.product_name == stocks.name && adjustment.level == stocks.level && adjustment.pallet == stocks.pallet && adjustment.isle == stocks.isle  && adjustment.expiry_date == stocks.expiry_date && adjustment.production_date == stocks.production_date && adjustment.batch_code == stocks.batch_code && adjustment.room_names == stocks.room) { %>
+                                                                            <% console.log(stocks.unitdata) %>
+                                                                            <% if(adjustment.product_name == stocks.name && adjustment.level == stocks.level && adjustment.rack == stocks.rack  && adjustment.room_names == stocks.room && stocks.idfromtransaction == adjustment.idfromtransaction) { %>
 
                                                                                 
 
@@ -200,14 +199,7 @@
                                                                                     id="adjust_qty<%= x %>" class="form-control edit_product_name" style="width: 150px;"  oninput="myFunctionCompute('<%= x %>')" onkeyup="ValidationForMaxQTY('<%= stocks.product_code %>', '<%= x %>')"  value="<%= adjustment.adjust_qty %>" readonly>
                                                                                 </td>
 
-                                                                                <td class="align-top">
-                                                                                    <input type="text" name="batch_code"
-                                                                                    id="batch_code" class="form-control batch_code" style="width: 150px;" value="<%= adjustment.batch_code %>" readonly>
-                                                                                </td>
-
-                                                                                <td class="align-top">
-                                                                                    <input type="date" name="expiry_date" class="form-control" style="width: 150px;" id="expiry_date" value="<%= adjustment.expiry_date %>" readonly> 
-                                                                                </td>
+                                                                              
 
                                                                                 <td class="align-top">
                                                                                     <input type="text" name="stock"
@@ -225,7 +217,7 @@
 
                                                                                 <td class="align-top">
                                                                                     <input type="text" name="unit"
-                                                                                    id="unit" class="form-control unit" style="width: 150px;"  value="<%= adjustment.unit %>" readonly>
+                                                                                    id="unit" class="form-control unit" style="width: 150px;"  value="<%= stocks.unitdata %>" readonly>
                                                                                 </td>
 
 
@@ -247,7 +239,7 @@
 
                                                                                 <td class="align-top">
                                                                                     <input type="text" name="level"
-                                                                                    id="level" class="form-control edit_product_name" style="width: 150px;"  value="<%= adjustment.isle+adjustment.pallet %>" readonly>
+                                                                                    id="level" class="form-control edit_product_name" style="width: 150px;"  value="<%= adjustment.rack %>" readonly>
                                                                                 </td>
         
         

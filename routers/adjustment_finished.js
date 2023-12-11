@@ -545,7 +545,7 @@ router.get("/preview/:id", auth , async (req, res) => {
                     product_stock: { $first: "$product_details.product_stock" },
                     level: { $first: "$product_details.level" },
                     isle: { $first: "$product_details.isle" },
-                    pallet: { $first: "$product_details.pallet" },
+                    pallet: { $first: "$product_details.rack" },
                     primary_code: { $first: "$product_details.primary_code" },
                     secondary_code: { $first: "$product_details.secondary_code" },
                     product_code: { $first: "$product_details.product_code" },
@@ -556,6 +556,8 @@ router.get("/preview/:id", auth , async (req, res) => {
                     batch_code: { $first: "$product_details.batch_code"},
                     maxPerUnit: { $first: "$product_details.maxPerUnit"},
                     room: { $first: "$room"},
+                    idfromtransaction: { $first: "$product_details.idfromtransaction"},
+                    unitdata: { $first: "$product_details.unit"},
                 }
             },
         ])
